@@ -77,8 +77,9 @@ contract carrental{
         rentalIds.push(counter);
     emit CarsCreated(
              carname,
+              drivername,
              carnum,
-             drivername,
+            
              startKm,
              endKm,
              totalHr,
