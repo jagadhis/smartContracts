@@ -122,7 +122,7 @@ contract carrental{
         require(id < counter, "No such Rental");
 
         carrentalinfo storage s = rentals[id];
-        return (s.carname,s.datesBooked);
+        return (s.carname,s.amount,s.datesBooked);
     }
 
 }
