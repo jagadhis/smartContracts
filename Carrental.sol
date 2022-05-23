@@ -26,9 +26,9 @@ contract carrental{
 
        event CarsCreated (
         uint256 id,
-        string carname,
+        string  carname,
         uint256 carnum,
-        string drivername,
+        string  drivername,
         uint256 startKm,
         uint256 endKm,
         uint256 totalHr,
@@ -49,7 +49,7 @@ contract carrental{
     uint256[] public rentalIds;
 
     function addRentals(
-        uint256  id,
+      
         string memory carname,
         uint256  carnum,
         string memory drivername,
@@ -62,6 +62,7 @@ contract carrental{
     ) public {
         require(msg.sender == owner, "Only owner of smart contract can put up rentals");
         carrentalinfo storage newRental = rentals[counter];
+      
         newRental.carname = carname;
         newRental.carnum = carnum;
         newRental.drivername = drivername;
@@ -76,17 +77,18 @@ contract carrental{
         newRental.renter = owner;
         rentalIds.push(counter);
     emit CarsCreated(
+         counter, 
              carname,
-              drivername,
+             
              carnum,
-            
+             drivername,
              startKm,
              endKm,
              totalHr,
              totalkm,
              amount,
              datesBooked, 
-             counter, 
+           
              owner
              );
         counter++;
@@ -108,7 +110,7 @@ contract carrental{
         
         require(id < counter, "No such Rental");
         require(checkBookings(id, newBookings), "Already Booked For Requested Date");
-        require(msg.value == (rentals[id].totalkm * 1 wei * newBookings.length) , "Please submit the asking price in order to complete the purchase");
+        require(msg.value == (rentals[id].totalkm * 1 ether * newBookings.length) , "Please submit the asking price in order to complete the purchase");
     
         for (uint i = 0; i < newBookings.length; i++) {
             rentals[id].datesBooked.push(newBookings[i]);
