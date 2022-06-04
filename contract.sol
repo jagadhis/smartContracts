@@ -20,8 +20,8 @@ contract ZombieWorld{   //creating a Contract
   }
 
   function _generateRandomDna(string memory _str) private view returns (uint){  //view function only viewing the data but it cannot be modified 
-  keccak256(abi.encodePacked(_str));
-            uint rand = uint(keccak256(abi.encodePacked(_str)));
+  keccak256(abi.encodePacked(_str));   //hashfunction keccak256 inbuilt version of SHA3
+            uint rand = uint(keccak256(abi.encodePacked(_str)));   //typecasting
         return rand % dnaModulus;
 
   }
