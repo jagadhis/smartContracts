@@ -15,6 +15,9 @@ contract ZombieWorld{
   function createZombie(string memory _name,uint _dna) public{
       zombies.push(Zombie(_name,_dna));
   }
+  function _createZombie(string memory _name,uint _dna) private{
+      zombies.push(Zombie(_name,_dna));
+  }
 
 
 }
