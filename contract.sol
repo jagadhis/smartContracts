@@ -25,6 +25,10 @@ contract ZombieWorld{   //creating a Contract
         return rand % dnaModulus;
 
   }
+    function createRandomZombie(string memory _name) public {  //creating a randomzombie generator with name as parameter
+        uint randDna = _generateRandomDna(_name);    //calling generateRandomDna function in randdna variable
+        _createZombie(_name, randDna);   //calling createzombie function
+    }
 
 
 }
