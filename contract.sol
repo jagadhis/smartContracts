@@ -3,7 +3,8 @@ pragma solidity ^0.8.7;
 
 contract ZombieWorld{   //creating a Contract 
 
-    event NewZombie(uint zombieId,string name,uint dna);
+
+    event NewZombie(uint zombieId,string name,uint dna); //created a Event
     uint dnaDigits = 16;   //initiating a unsigned integer 
     uint dnaModulus = 10 ** dnaDigits; //using a Math Operator - Exponential Operator
 
@@ -21,8 +22,8 @@ contract ZombieWorld{   //creating a Contract
     function _createZombie(string memory _name, uint _dna) private {
         zombies.push(Zombie(_name, _dna));
       
-          uint id = zombies.length - 1;
-        emit NewZombie(id, _name, _dna);
+          uint id = zombies.length - 1;  //creating a variable for ID
+        emit NewZombie(id, _name, _dna); //emit to let know the function is called
     }
   function _generateRandomDna(string memory _str) private view returns (uint){  //view function only viewing the data but it cannot be modified 
   keccak256(abi.encodePacked(_str));   //hashfunction keccak256 inbuilt version of SHA3
