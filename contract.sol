@@ -21,7 +21,7 @@ contract ZombieWorld{   //creating a Contract
     function _createZombie(string memory _name, uint _dna) private {
         zombies.push(Zombie(_name, _dna));
       
-          uint id = zombies.push(Zombie(_name, _dna)) ;
+          uint id = zombies.length - 1;
         emit NewZombie(id, _name, _dna);
     }
   function _generateRandomDna(string memory _str) private view returns (uint){  //view function only viewing the data but it cannot be modified 
