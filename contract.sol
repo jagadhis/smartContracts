@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.7;
 
+//Note: In Solidity, function execution always needs to start with an external caller. A contract will just sit on the blockchain doing nothing until someone calls one of its functions. So there will always be a msg.sender.
+
 contract ZombieWorld{   //creating a Contract 
 
 
@@ -26,6 +28,8 @@ contract ZombieWorld{   //creating a Contract
         zombies.push(Zombie(_name, _dna));
       
           uint id = zombies.length - 1;  //creating a variable for ID
+             zombieToOwner[id] = msg.sender; //mapping zombieToOwner ID TO Msg.sender
+        ownerZombieCount[msg.sender]++; //increasing the count of Msg.sender when owner has created more than one zombie 
         emit NewZombie(id, _name, _dna); //emit to let know the function is called
     }
   function _generateRandomDna(string memory _str) private view returns (uint){  //view function only viewing the data but it cannot be modified 
