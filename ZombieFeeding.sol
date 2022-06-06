@@ -30,11 +30,20 @@ contract ZombieFeeding is ZombieWorld {
  
   KittyInterface kittyContract  = KittyInterface(ckAddress);
 
-    function feedAndMultiply(uint _zombieId,uint _targetDna) public{
+    function feedAndMultiply(uint _zombieId,uint _targetDna,string memory _species) public{
         require(msg.sender == zombieToOwner[_zombieId]);  //checking that sender is same to ID of Zombie
     Zombie storage myZombie = zombies[_zombieId];  //storing the zombieId in an array
      _targetDna = _targetDna % dnaModulus;  //checking the data is in 16 bits long
-     uint newDna = (myZombie.dna + _targetDna) / 2;    //calaculating a New zombie DNA using average method
+     uint newDna = (myZombie.dna + _targetDna) / 2;    //calculating a New zombie DNA using average method
+     if (keccak256(abi.encodePacked(_species)) == keccak256(abi.encodePacked("kitty"))) {
+      newDna = newDna - newDna % 100 + 99;
+    }
     _createZombie("NoName", newDna);  //creating a zombie with a nname form create zombie function call
     }
+
+     function feedOnKitty(uint _zombieId , uint _kittyId) public{
+       uint kittyDna;
+    (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId);  //calling the KittyContract and returning the data
+    feedAndMultiply(_zombieId, kittyDna,"Kitty");
+  }
 }
