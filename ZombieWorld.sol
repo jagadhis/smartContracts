@@ -24,7 +24,7 @@ contract ZombieWorld{   //creating a Contract
       zombies.push(Zombie(_name,_dna)); //pushing the paramteres value in the Struct array
      
   }
-    function _createZombie(string memory _name, uint _dna) private {
+    function _createZombie(string memory _name, uint _dna) public {
         zombies.push(Zombie(_name, _dna));
       
           uint id = zombies.length - 1;  //creating a variable for ID
@@ -38,7 +38,7 @@ contract ZombieWorld{   //creating a Contract
         return rand % dnaModulus;
 
   }
-    function createRandomZombie(string memory _name) public {  //creating a randomzombie generator with name as parameter
+    function _createRandomZombie(string memory _name) public {  //creating a randomzombie generator with name as parameter
         require(ownerZombieCount[msg.sender] == 0); //requiring a Condition to check that zombiecount of the owner is zero to create a zombie
         uint randDna = _generateRandomDna(_name);    //calling generateRandomDna function in randdna variable
         _createZombie(_name, randDna);   //calling createzombie function
