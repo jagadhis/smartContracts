@@ -6,10 +6,10 @@ import "./ZombieWorld.sol";
 //Note:Storage Refers to Variables Stored Permanently and Memory refers to Stored Temporarily.
 //Note: Function to access in inheritance should be made public or using external or internal
 //Note: Calling with other contracts declaring the functions to inteeract with and ending the declaration with semicolon to know the compiler its interface
+//Note: using Interface keywork Instead if contract in Newer Version.
 
 
-
-contract KittyInterface {
+interface KittyInterface {
     function getKitty(uint256 _id) external view returns (
     bool isGestating,
     bool isReady,
