@@ -24,7 +24,7 @@ contract ZombieWorld{   //creating a Contract
       zombies.push(Zombie(_name,_dna)); //pushing the paramteres value in the Struct array
      
   }
-    function _createZombie(string memory _name, uint _dna) public {
+    function _createZombie(string memory _name, uint _dna) internal {
         zombies.push(Zombie(_name, _dna));
       
           uint id = zombies.length - 1;  //creating a variable for ID
