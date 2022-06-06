@@ -15,6 +15,9 @@ contract ZombieWorld{   //creating a Contract
 }
   Zombie[] public zombies;  //Creating Struct array With Public 
 
+   mapping (uint => address) public zombieToOwner; //mapping the address that owns a zombie
+   mapping (address => uint) ownerZombieCount; //mapping the number of zombies an owner has
+
   function createZombie(string memory _name,uint _dna) public{   //creating Funciton With Public Visibility and adding function parameters
       zombies.push(Zombie(_name,_dna)); //pushing the paramteres value in the Struct array
      
