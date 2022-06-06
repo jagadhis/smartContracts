@@ -46,6 +46,4 @@ contract ZombieWorld{   //creating a Contract
 
 
 }
-contract ZombieFeeding is ZombieWorld {  //inheritance of ZombieWorld to ZombieFeeding
-    
-}
+
