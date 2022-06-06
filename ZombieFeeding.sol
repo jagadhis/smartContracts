@@ -5,7 +5,24 @@ import "./ZombieWorld.sol";
 
 //Note:Storage Refers to Variables Stored Permanently and Memory refers to Stored Temporarily.
 //Note: Function to access in inheritance should be made public or using external or internal
+//Note: Calling with other contracts declaring the functions to inteeract with and ending the declaration with semicolon to know the compiler its interface
 
+
+
+contract KittyInterface {
+    function getKitty(uint256 _id) external view returns (
+    bool isGestating,
+    bool isReady,
+    uint256 cooldownIndex,
+    uint256 nextActionAt,
+    uint256 siringWithId,
+    uint256 birthTime,
+    uint256 matronId,
+    uint256 sireId,
+    uint256 generation,
+    uint256 genes
+  );
+}
 
 contract ZombieFeeding is ZombieWorld {  
     function feedAndMultiply(uint _zombieId,uint _targetDna) public{
