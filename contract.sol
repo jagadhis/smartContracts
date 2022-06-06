@@ -2,7 +2,7 @@
 pragma solidity ^0.8.7;
 
 //Note: In Solidity, function execution always needs to start with an external caller. A contract will just sit on the blockchain doing nothing until someone calls one of its functions. So there will always be a msg.sender.
-
+//Note:Require Is Used TO Check Condition To True BEfore running a Function
 contract ZombieWorld{   //creating a Contract 
 
 
@@ -39,6 +39,7 @@ contract ZombieWorld{   //creating a Contract
 
   }
     function createRandomZombie(string memory _name) public {  //creating a randomzombie generator with name as parameter
+        require(ownerZombieCount[msg.sender] == 0); //requiring a Condition to check that zombiecount of the owner is zero to create a zombie
         uint randDna = _generateRandomDna(_name);    //calling generateRandomDna function in randdna variable
         _createZombie(_name, randDna);   //calling createzombie function
     }
