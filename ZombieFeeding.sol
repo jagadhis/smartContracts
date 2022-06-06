@@ -4,6 +4,8 @@ pragma solidity ^0.8.7;
 import "./ZombieWorld.sol";
 
 //Note:Storage Refers to Variables Stored Permanently and Memory refers to Stored Temporarily.
+//Note: Function to access in inheritance should be made public or using external or internal
+
 
 contract ZombieFeeding is ZombieWorld {  
     function feedAndMultiply(uint _zombieId,uint _targetDna) public{
