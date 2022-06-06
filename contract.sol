@@ -28,6 +28,8 @@ contract ZombieWorld{   //creating a Contract
         zombies.push(Zombie(_name, _dna));
       
           uint id = zombies.length - 1;  //creating a variable for ID
+             zombieToOwner[id] = msg.sender; //mapping zombieToOwner ID TO Msg.sender
+        ownerZombieCount[msg.sender]++; //increasing the count of Msg.sender when owner has created more than one zombie 
         emit NewZombie(id, _name, _dna); //emit to let know the function is called
     }
   function _generateRandomDna(string memory _str) private view returns (uint){  //view function only viewing the data but it cannot be modified 
